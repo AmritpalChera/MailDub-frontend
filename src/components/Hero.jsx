@@ -43,7 +43,7 @@ export function Hero() {
       </div>
       <div className="mt-36">
         <p className="font-display text-base text-slate-900">
-          A decision you're sure to love
+          A decision you&#39;re sure to love
         </p>
         <div>
 
