@@ -1,6 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import authHandler from '@/utils/authHandler';
-import supabase from '@/utils/setup/supabase';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { object, string, array } from 'zod';
 import runMiddleware from '@/utils/setup/middleware';
