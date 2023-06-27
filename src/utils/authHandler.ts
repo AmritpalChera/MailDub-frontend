@@ -1,5 +1,4 @@
 import type { NextApiRequest } from 'next';
-import supabase from './setup/supabase';
 
 
 // validates the token and returns a boolean
