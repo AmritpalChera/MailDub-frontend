@@ -2,12 +2,7 @@ import Image from 'next/image'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import logoLaravel from '@/images/logos/laravel.svg'
-import logoMirage from '@/images/logos/mirage.svg'
-import logoStatamic from '@/images/logos/statamic.svg'
-import logoStaticKit from '@/images/logos/statickit.svg'
-import logoTransistor from '@/images/logos/transistor.svg'
-import logoTuple from '@/images/logos/tuple.svg'
+import VideoImage from '@/images/screenshots/vidImage.png';
 
 export function Hero() {
   return (
@@ -46,7 +41,21 @@ export function Hero() {
           <span className="ml-3">Watch video</span>
         </Button>
       </div>
-      <div className="mt-36 lg:mt-44">
+      <div className="mt-36">
+        <p className="font-display text-base text-slate-900">
+          A decision you're sure to love
+        </p>
+        <div>
+
+        </div>
+        <div className='w-full flex justify-center'>
+          <div className=' max-w-4xl rounded-xl overflow-hidden flex justify-center mt-6 mb-16 cursor-pointer shadow-2xl shadow-gray-300 hover:shadow-gray-700 '>
+            <Image src={VideoImage} className='w-full  rounded-xl  ' width={2000} height={2000} alt="maildub" />
+          </div>
+        </div>
+        
+      </div>
+      {/* <div className="mt-36 lg:mt-44">
         <p className="font-display text-base text-slate-900">
           Trusted by these six companies so far
         </p>
@@ -80,7 +89,7 @@ export function Hero() {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </Container>
   )
 }
