@@ -30,8 +30,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (creation.error) console.log(creation.error)
 
     // No matter what they pay for now,the message limit increases to 1000
-    const increaseLimit = await supabase.from('Analytics').upsert({userId: client_reference_id, messageLimit: 100000, friendLimit: 100000})
-    if (increaseLimit.error) console.log('could not increases limits: ', increaseLimit.error)
     // CHANGE LIMIT IN ANALYTICS PLAN
   }
   else if (type === 'customer.subscription.deleted') {
