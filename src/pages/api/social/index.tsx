@@ -3,6 +3,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { object, string, array } from 'zod';
 import runMiddleware from '@/utils/setup/middleware';
 import openai from '@/utils/setup/openai';
+import authHandler from '@/utils/authHandler';
+import supabaseInternal from '@/utils/setup/supabase-internal';
 
 type Data = {
   text?: string,
@@ -36,12 +38,25 @@ const getTemplate = (socialMedia: string, emailContent: string) => {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   await runMiddleware(req, res);
-  // try {
-  //   await authHandler(req);
-  // } catch (e: any) {
-  //   console.log(e)
-  //   return res.status(403).json({error: e})
-  // }
+  let userId: string;
+  try {
+    userId = await authHandler(req);
+  } catch (e: any) {
+    console.log(e)
+    return res.status(403).json({error: e})
+  };
+
+  if (!userId) {
+    res.json({ text: 'Invalid Authorization. Please login.' });
+    return;
+  }
+  // check if user is customer, otherwise return subscription text.
+  const customerData = await supabaseInternal.from('customers').select().eq('userId', userId).single();
+  if (customerData.error) {
+    console.log(customerData.error);
+    res.json({ text: 'Looks like you are not subscribed. Visit MailDub.Club to subscribe to the service' });
+    return;
+  }
 
   if (req.method === 'POST') {
     const result = bodySchema.safeParse(req.body);

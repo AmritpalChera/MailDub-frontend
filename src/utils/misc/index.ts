@@ -3,3 +3,9 @@ export function wait(timeout: number) {
       setTimeout(resolve, timeout);
   });
 }
+
+export const protectedRoutes = [
+  '/checkout',
+  '/installed',
+  '/manage'
+];

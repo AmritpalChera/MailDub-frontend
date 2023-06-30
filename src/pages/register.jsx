@@ -5,8 +5,50 @@ import { AuthLayout } from '@/components/AuthLayout'
 import { Button } from '@/components/Button'
 import { SelectField, TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
+import { selectUser, setUserData } from '../redux/features/UserSlice'
+import { useDispatch, useSelector } from 'react-redux';
+import supabase from '@/utils/setup/supabase';
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Register() {
+
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const router = useRouter();
+
+  async function signInWithGoogle() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+    })
+  };
+
+  const formSubmitted = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const formProps = Object.fromEntries(formData);
+
+    const status = await supabase.auth.signUp({ email: formProps.email, password: formProps.password });
+    
+    if (status?.error) {
+      console.log(status.error.message)
+      return;
+    }
+
+    const user = status?.data?.user;
+    dispatch(setUserData({ ...user }));
+    
+    // setEmail('');
+    // setPassword('');
+  }
+
+  useEffect(() => {
+    if (user) {
+      if (user.customer?.userId) router.push('/manage');
+      else router.push('/checkout');
+    }
+  }, [user]);
+
   return (
     <>
       <Head>
@@ -70,7 +112,7 @@ export default function Register() {
             Sign up with Google
         </button>
         <form
-          action="#"
+          onSubmit={formSubmitted}
           className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2"
         >
           <TextField
@@ -104,6 +146,7 @@ export default function Register() {
             id="password"
             name="password"
             type="password"
+            minLength="6"
             autoComplete="new-password"
             required
           />

@@ -1,12 +1,17 @@
-import { Fragment } from 'react'
+"use client";
+
+import { Fragment, useEffect } from 'react'
 import Link from 'next/link'
 import { Popover, Transition } from '@headlessui/react'
 import clsx from 'clsx'
-
+import supabase from '@/utils/setup/supabase';
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
+import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout, selectUser, setUserData } from '../redux/features/UserSlice';
 
 function MobileNavLink({ href, children }) {
   return (
@@ -90,6 +95,15 @@ function MobileNavigation() {
 }
 
 export function Header() {
+
+  const { id } = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const signout = async () => {
+    dispatch(logout());
+    await supabase.auth.signOut();
+  }
+
   return (
     <header className="py-10">
       <Container>
@@ -104,19 +118,32 @@ export function Header() {
               <NavLink href="#pricing">Pricing</NavLink>
             </div>
           </div>
-          <div className="flex items-center gap-x-5 md:gap-x-8">
-            <div className="hidden md:block">
-              <NavLink href="/login">Sign in</NavLink>
+          {!id ? (
+              <div className="flex items-center gap-x-5 md:gap-x-8">
+              <div className="hidden md:block">
+                <NavLink href="/login">Sign in</NavLink>
+              </div>
+              <Button href="/register" color="blue">
+                <span>
+                  Get started <span className="hidden lg:inline">today</span>
+                </span>
+              </Button>
+              <div className="-mr-1 md:hidden">
+                <MobileNavigation />
+              </div>
             </div>
-            <Button href="/register" color="blue">
-              <span>
-                Get started <span className="hidden lg:inline">today</span>
-              </span>
-            </Button>
-            <div className="-mr-1 md:hidden">
-              <MobileNavigation />
-            </div>
-          </div>
+          ) : (
+            <div className="flex items-center gap-x-5 md:gap-x-8">
+              <Button onClick={signout} color="blue">
+                <span>
+                  Sign out
+                </span>
+              </Button>
+              <div className="-mr-1 md:hidden">
+                <MobileNavigation />
+              </div>
+            </div>  
+          )}
         </nav>
       </Container>
     </header>

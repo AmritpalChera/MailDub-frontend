@@ -6,6 +6,8 @@ import openai from '@/utils/setup/openai';
 import axios from 'axios';
 import { leapGenerate, leapGet } from '@/utils/leap';
 import { wait } from '@/utils/misc';
+import authHandler from '@/utils/authHandler';
+import supabaseInternal from '@/utils/setup/supabase-internal';
 
 type Data = {
   url?: string,
@@ -38,12 +40,26 @@ const getTemplate = (emailSummary: string) => {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   await runMiddleware(req, res);
-  // try {
-  //   await authHandler(req);
-  // } catch (e: any) {
-  //   console.log(e)
-  //   return res.status(403).json({error: e})
-  // }
+
+  let userId: any;
+  try {
+    userId = await authHandler(req);
+  } catch (e: any) {
+    console.log(e)
+    return res.status(403).json({error: e})
+  };
+
+  if (!userId) {
+    res.json({ url: '' });
+    return;
+  }
+  // check if user is customer, otherwise return subscription text.
+  const customerData = await supabaseInternal.from('customers').select().eq('userId', userId).single();
+  if (customerData.error) {
+    console.log(customerData.error);
+    res.json({ url: '' });
+    return;
+  }
 
   if (req.method === 'POST') {
     const result = bodySchema.safeParse(req.body);
