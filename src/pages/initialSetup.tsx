@@ -14,8 +14,11 @@ export default function Setup({children}) {
     const user = session?.data?.session?.user;
     if (user) {
       let dataToSet = { ...user, loaded: true, customer: {} }
-      const customer = await supabase.from('customers').select().eq('userId', user?.id).select();
+      console.log('userId is: ', user.id)
+      const customer = await supabase.from('customers').select().eq('userId', user?.id).single();
       if (customer.data) dataToSet = { ...dataToSet, customer: customer.data };
+      console.log('customer is: ', customer);
+      console.log("data to set is: ", dataToSet)
       dispatch(setUserData(dataToSet));
       const signinRedirect = localStorage.getItem('signinRedirect');
       localStorage.removeItem('signinRedirect');

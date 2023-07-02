@@ -8,12 +8,14 @@ import { Logo } from '@/components/Logo'
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../redux/features/UserSlice';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function Login() {
   const dispatch = useDispatch();
   const router = useRouter();
+  const [error, setError] = useState('');
   async function signInWithGoogle() {
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    await supabase.auth.signInWithOAuth({
       provider: 'google',
     })
   };
@@ -28,6 +30,7 @@ export default function Login() {
     
     if (status?.error) {
       console.log(status.error.message)
+      setError(status.error.message);
       return;
     }
 
@@ -65,6 +68,7 @@ export default function Login() {
             </p>
           </div>
         </div>
+        
         <form onSubmit={formSubmitted} className="mt-10 grid grid-cols-1 gap-y-8">
           <TextField
             label="Email address"
@@ -82,6 +86,11 @@ export default function Login() {
             autoComplete="current-password"
             required
           />
+          <div>
+            <p className="mt-0 text-sm text-center text-red-700">
+            {error}
+            </p>
+          </div>
           <div>
             <Button
               type="submit"

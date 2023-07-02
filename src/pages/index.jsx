@@ -7,8 +7,10 @@ import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { Pricing } from '@/components/Pricing'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
+import { useEffect } from 'react'
 
 export default function Home() {
+
   return (
     <>
       <Head>

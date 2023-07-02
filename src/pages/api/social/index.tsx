@@ -54,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const customerData = await supabaseInternal.from('customers').select().eq('userId', userId).single();
   if (customerData.error) {
     console.log(customerData.error);
-    res.json({ text: 'Looks like you are not subscribed. Visit MailDub.Club to subscribe to the service' });
+    res.json({ text: 'Visit MailDub.Club to subscribe to the service' });
     return;
   }
 

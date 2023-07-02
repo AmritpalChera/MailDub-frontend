@@ -5,3 +5,12 @@
 #__next {
   min-height: 100%;
 }
+
+.getStartedButton span{
+  transform: translateX(-101%);
+  transition: transform .2s ease-in
+}
+
+.getStartedButton:hover span{
+  transform: translateX(0)
+}

@@ -4,16 +4,13 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { AuthLayout } from '@/components/AuthLayout'
 import { Logo } from '@/components/Logo'
-import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { selectUser } from '../redux/features/UserSlice';
 import Image from 'next/image';
 import GmailLogo from '@/images/logos/gmail.svg';
 
 export default function Login() {
-  const dispatch = useDispatch();
-  const router = useRouter();
   const user = useSelector(selectUser);
 
  
@@ -24,14 +21,13 @@ export default function Login() {
         console.log('error sending message', response);
         return response;
       }
-      console.log('Sucesss ::: ', response.message)
     });
   };
 
   useEffect(() => {
     if (user.id) {
       // get customer and see if they are signed in
-      sendTokenToChromeExtension({extensionId: 'ealjelfhcklhoidkongmdalegoghhjhi', userId: user.id})
+      sendTokenToChromeExtension({extensionId: process.env.NEXT_PUBLIC_EXTENTION_ID, userId: user.id})
     }
   }, [user]);
 
@@ -54,13 +50,16 @@ export default function Login() {
             </p>
           </div>
         </div>
+      
+        <Link href="https://mail.google.com">
+          <button className="my-6 flex w-full items-center justify-center rounded-full bg-white px-3 py-2 text-sm font-medium  shadow-one hover:text-primary border-2 border-gray">
+            <span className="mr-3">
+              <Image src={GmailLogo} width={30} height={20} className='h-4'/>
+            </span>
+              Continue to Gmail 
+          </button>
+        </Link>
         
-        <button className="my-6 flex w-full items-center justify-center rounded-full bg-white px-3 py-2 text-sm font-medium  shadow-one hover:text-primary border-2 border-gray">
-          <span className="mr-3">
-            <Image src={GmailLogo} width={30} height={20} className='h-4'/>
-          </span>
-            Continue to Gmail 
-        </button>
       </AuthLayout>
     </>
   )

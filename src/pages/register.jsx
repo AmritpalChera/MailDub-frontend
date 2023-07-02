@@ -8,7 +8,7 @@ import { Logo } from '@/components/Logo'
 import { selectUser, setUserData } from '../redux/features/UserSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import supabase from '@/utils/setup/supabase';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 export default function Register() {
@@ -16,9 +16,10 @@ export default function Register() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const router = useRouter();
+  const [error, setError] = useState('');
 
   async function signInWithGoogle() {
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    await supabase.auth.signInWithOAuth({
       provider: 'google',
     })
   };
@@ -31,7 +32,8 @@ export default function Register() {
     const status = await supabase.auth.signUp({ email: formProps.email, password: formProps.password });
     
     if (status?.error) {
-      console.log(status.error.message)
+      console.log(status.error.message);
+      setError(status.error.message);
       return;
     }
 
@@ -43,7 +45,7 @@ export default function Register() {
   }
 
   useEffect(() => {
-    if (user) {
+    if (user?.id) {
       if (user.customer?.userId) router.push('/manage');
       else router.push('/checkout');
     }
@@ -75,7 +77,7 @@ export default function Register() {
             </p>
           </div>
         </div>
-        <button className="my-6 flex w-full items-center justify-center rounded-full bg-white px-3 py-2 text-sm font-medium  shadow-one hover:text-primary border-2 border-gray">
+        <button onClick={signInWithGoogle} className="my-6 flex w-full items-center justify-center rounded-full bg-white px-3 py-2 text-sm font-medium  shadow-one hover:text-primary border-2 border-gray">
           <span className="mr-3">
             <svg
               width="20"
@@ -109,7 +111,7 @@ export default function Register() {
               </defs>
             </svg>
           </span>
-            Sign up with Google
+            Sign in with Google
         </button>
         <form
           onSubmit={formSubmitted}
@@ -161,6 +163,11 @@ export default function Register() {
             <option>Newsletter</option>
             <option>Other</option>
           </SelectField>
+          <div className='col-span-full'>
+            <p className="m-0 text-sm text-center text-red-700">
+            {error}
+            </p>
+          </div>
           <div className="col-span-full">
             <Button
               type="submit"

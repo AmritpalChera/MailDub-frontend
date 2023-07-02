@@ -46,11 +46,11 @@ function CheckIcon({ className }) {
   )
 }
 
-function Plan({ name, price, description, href, features, featured = false }) {
+function Plan({ name, price, description, href, features, featured = false, buttonText = 'Get started' }) {
   return (
     <section
       className={clsx(
-        'flex flex-col rounded-3xl px-6 sm:px-8 min-w-[370px]',
+        'flex flex-col rounded-3xl px-6 sm:px-8 min-w-[370px] border-2 border-white py-8',
         featured ? 'order-first bg-blue-600 py-8 lg:order-none' : 'lg:py-8'
       )}
     >
@@ -87,7 +87,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
         className="mt-8"
         aria-label={`Get started with the ${name} plan for ${price}`}
       >
-        Get started
+        {buttonText}
       </Button>
     </section>
   )
@@ -114,7 +114,7 @@ export function Pricing() {
             work well for you.
           </p>
         </div>
-        <div className="flex w-full justify-center pt-12">
+        <div className="flex w-full justify-center pt-12 gap-8 flex-wrap">
           <Plan
             featured
             name="7-Days Free Trial"
@@ -129,6 +129,18 @@ export function Pricing() {
               'Facebook Content Generation',
               'LinkedIn Content Generation',
               'Ability to regenerate Content',
+            ]}
+          />
+          <Plan
+            name="Contact Us"
+            price="Enterprise"
+            description="For larger teams and institutions."
+            href="https://forms.gle/9V6xpUPRrHXobtwy7"
+            buttonText='Contact Us'
+            features={[
+              'Everything in pro',
+              'Bulk subscriptions',
+              'Discounted rates',
             ]}
           />
         </div>

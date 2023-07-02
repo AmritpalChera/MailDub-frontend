@@ -12,7 +12,7 @@ const faqs = [
     },
     {
       question: 'Can I pay for my subscription via purchase order?',
-      answer: 'Absolutely, we are happy to take your money in all forms.',
+      answer: 'Absolutely, we make it easy for customers through Stripe. You can choose any payment method of your choice',
     },
     {
       question: 'How do I apply for a job at MailDub?',
@@ -52,7 +52,7 @@ const faqs = [
     {
       question: 'What social media platforms does your extention support?',
       answer:
-        'Currently the extension supports writing copy for Twitter, LinkedIn, Instagram and Facebook.',
+        'Currently the extension supports writing content for Twitter, LinkedIn, Instagram and Facebook.',
     },
   ],
 ]

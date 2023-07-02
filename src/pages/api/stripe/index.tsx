@@ -8,9 +8,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.log("customer subscription about to end", req.body);
   }
   else if (type === 'checkout.session.completed') {
+    console.log('checkout complete')
     const { customer_details, client_reference_id, amount_total, customer, payment_status } = req.body?.data?.object;
     if (payment_status !== 'paid') return res.status(200).send({ success: true });
- 
+    console.log('payment status paid: ', payment_status)
+    console.log('client reference id: ', client_reference_id)
     if (!client_reference_id) return res.status(500).send({ error: 'Missing client identification' });
 
     // console.log('client refrence id: ', client_reference_id)
@@ -22,9 +24,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       userId: client_reference_id,
       email: customer_details.email,
       amount: amount_total,
-      expiryDate:  null,
       stripeId: customer || ""
     });
+
+    console.log('creation: ', creation)
 
     // SAVE ERRORS IN DB LATER
     if (creation.error) console.log(creation.error)

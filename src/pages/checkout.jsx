@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 export default function Login() {
 
-  const { email } = useSelector(selectUser);
+  const { email, id } = useSelector(selectUser);
 
   useEffect(() => {
     console.log('email: ', email)
@@ -43,6 +43,11 @@ export default function Login() {
           <TextField
             value="basic"
             name="lookup_key"
+            type="hidden"
+          />
+          <TextField
+            value={id}
+            name="userId"
             type="hidden"
           />
           <div>
