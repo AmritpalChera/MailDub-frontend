@@ -1,12 +1,11 @@
 import Image from 'next/image'
 
-import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import VideoImage from '@/images/screenshots/vidImage.png';
 
 export function Hero() {
   return (
-    <Container className="pb-16 pt-20 text-center lg:pt-32">
+    <Container className="pb-4 pt-20 text-center lg:pt-32">
       <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
         Explosive{' '}
         <span className="relative whitespace-nowrap text-blue-600">
@@ -26,38 +25,8 @@ export function Hero() {
         Our chrome extention saves hours curating best gmail content
         for your next social media post. Do it now with one click!
       </p>
-      <div className="mt-10 flex justify-center gap-x-6">
-        <Button href="/register" className="relative getStartedButton overflow-clip hover:text-white hover:bg-slate-900 transition-all" >
-          <span class="absolute inset-x-0 h-1 bottom-0 bg-blue-600"></span>
-          Get 7 days free  
-        </Button>
-        <Button
-          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-          variant="outline"
-        >
-          <svg
-            aria-hidden="true"
-            className="h-3 w-3 flex-none fill-blue-600 group-active:fill-current"
-          >
-            <path d="m9.997 6.91-7.583 3.447A1 1 0 0 1 1 9.447V2.553a1 1 0 0 1 1.414-.91L9.997 5.09c.782.355.782 1.465 0 1.82Z" />
-          </svg>
-          <span className="ml-3">Watch video</span>
-        </Button>
-      </div>
-      <div className="mt-36">
-        <p className="font-display text-base text-slate-900">
-          A decision you&#39;re sure to love
-        </p>
-        <div>
-
-        </div>
-        <div className='w-full flex justify-center'>
-          <div className=' max-w-4xl rounded-xl overflow-hidden flex justify-center mt-6 mb-16 cursor-pointer shadow-2xl shadow-gray-300 hover:shadow-gray-700 '>
-            <Image src={VideoImage} className='w-full  rounded-xl  ' width={2000} height={2000} alt="maildub" />
-          </div>
-        </div>
-        
-      </div>
+      
+      
       {/* <div className="mt-36 lg:mt-44">
         <p className="font-display text-base text-slate-900">
           Trusted by these six companies so far

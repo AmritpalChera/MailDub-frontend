@@ -8,6 +8,7 @@ import { Hero } from '@/components/Hero'
 import { Pricing } from '@/components/Pricing'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { useEffect } from 'react'
+import { BaseModal } from '../components/Modal'
 
 export default function Home() {
 
@@ -23,6 +24,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <BaseModal />
         <PrimaryFeatures />
         {/* <SecondaryFeatures /> */}
         <CallToAction />

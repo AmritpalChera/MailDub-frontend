@@ -25,7 +25,7 @@ export function CallToAction() {
           </h2>
           <p className="mt-4 text-lg tracking-tight text-black">
             It’s time to take control of your sales. Buy our software so you can
-            feel like you’re doing something productive.
+            be more productive and focus on what matters.
           </p>
           <Button href="/register" color="blue" className="mt-10">
             Get 7 days free
