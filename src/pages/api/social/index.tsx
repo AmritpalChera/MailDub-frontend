@@ -18,23 +18,106 @@ const bodySchema = object({
 });
 
 
-const getTemplate = (socialMedia: string, emailContent: string) => {
+const getTwitterTemplate = (emailContent: string) => {
   const systemTemplate = `
-    You are a copywriter for different social media platforms who makes posts for marketing campaigns.
+    You are a Twitter expert. You write simple copy for Twitter.
 
-    Rules for social media platforms: 
-      - for twitter keep text concise, limited to less than 280 characters.
-    - for facebook, use emojis and visuals
-    - for linkedin, keep text professional
-    - for instagram, text must appeal to younger audience
-  `
-  const formattedContent = `Give me the copy for a formatted ${socialMedia} post of this email. This is for marketing to a large audience. \n\n Email: \n${emailContent}`;
+    Rules of Twitter:
+      1. Total characters must be less than 280
+    
+    Important Tips:
+      1. Tweets are conversational
+      2. Tweets use simple words.
+      3. Tweets make clear calls-to-action
+  `;
+  const formattedContent = `Write me a Twitter post from the given email. Keep length less than 280 characters. \n\n Email: \n\n${emailContent}\n\nShort answer:`;
   const chatData: any = [
     { role: 'system', content: systemTemplate},
     { role: 'user', content: formattedContent }
   ];
   return chatData;
-}
+};
+
+const getInstagramTemplate = (emailContent: string) => {
+  const systemTemplate = `
+    You are an Instagram expert. You write catchy content for Instagram.
+
+    Rules:
+      1. Text must appeal to younger audience
+      2. Text must be short
+    
+    Important Tips:
+      1. Write a compelling caption
+      2. Use a personal tone.
+      3. Use clear calls to actions
+    
+    TODO:
+      1. Filter out important details from the email
+      2. Write good content
+  `;
+  const formattedContent = `Write me an Instagram post from the given email. Write short sentences. Keep length less than 400 characters. \n\n Email: \n\n${emailContent}\n\nShort answer:`;
+  const chatData: any = [
+    { role: 'system', content: systemTemplate},
+    { role: 'user', content: formattedContent }
+  ];
+  return chatData;
+};
+
+const getFacebookTemplate = (emailContent: string) => {
+  const systemTemplate = `
+    You are an Facebook expert. You write catchy content for Facebook.
+
+    Rules:
+      1. Text must be short
+    
+    Important Tips:
+      1. Write a compelling caption
+      2. Use a personal tone.
+      3. Use clear calls to actions
+    
+    TODO:
+      1. Filter out important details from the email
+      2. Write good content
+  `;
+  const formattedContent = `Write me an Facebook post from the given email. Write short sentences. Keep length less than 400 characters. \n\n Email: \n\n${emailContent}\n\nShort answer:`;
+  const chatData: any = [
+    { role: 'system', content: systemTemplate},
+    { role: 'user', content: formattedContent }
+  ];
+  return chatData;
+};
+
+const getLinkedInTemplate = (emailContent: string) => {
+  const systemTemplate = `
+    You are an Facebook expert. You write catchy content for Facebook.
+
+    Rules:
+      1. Text must be short
+    
+    Important Tips:
+      1. Write a compelling caption
+      2. Use a personal tone.
+      3. Use clear calls to actions
+    
+    TODO:
+      1. Filter out important details from the email
+      2. Write good content
+  `;
+  const formattedContent = `Write me an LinkedIn post from the given email. Write short sentences. \n\n Email: \n\n${emailContent}\n\nShort answer:`;
+  const chatData: any = [
+    { role: 'system', content: systemTemplate},
+    { role: 'user', content: formattedContent }
+  ];
+  return chatData;
+};
+
+
+const getTemplate = (socialMedia: string, emailContent: string) => {
+  if (socialMedia === 'twitter') return getTwitterTemplate(emailContent);
+  else if (socialMedia === 'instagram') return getInstagramTemplate(emailContent);
+  else if (socialMedia === 'facebook') return getFacebookTemplate(emailContent);
+  else if (socialMedia === 'linkedin') return getLinkedInTemplate(emailContent);
+};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   await runMiddleware(req, res);
