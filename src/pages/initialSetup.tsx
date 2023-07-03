@@ -9,6 +9,8 @@ export default function Setup({children}) {
   const dispatch = useDispatch();
   const router = useRouter();
   const userSession1 = async () => {
+    const routename = router.pathname.toLowerCase();
+    if (routename.includes('api')) return;
     const session = await supabase.auth.getSession();
     // const customer = await supabase.from('customers').select().single();
     const user = session?.data?.session?.user;
@@ -22,7 +24,6 @@ export default function Setup({children}) {
       if (signinRedirect) router.push(signinRedirect);
     } else {
       // user does not exists, see if they're trying to access protected route
-      const routename = router.pathname.toLowerCase();
       if (protectedRoutes.includes(routename)) {
         localStorage.setItem('signinRedirect', routename);
         router.push('/login');
