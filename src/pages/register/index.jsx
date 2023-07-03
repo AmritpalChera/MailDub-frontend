@@ -5,7 +5,7 @@ import { AuthLayout } from '@/components/AuthLayout'
 import { Button } from '@/components/Button'
 import { SelectField, TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
-import { selectUser, setUserData } from '../redux/features/UserSlice'
+import { selectUser, setUserData } from '@/redux/features/UserSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import supabase from '@/utils/setup/supabase';
 import { useEffect, useState } from 'react'

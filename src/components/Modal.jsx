@@ -39,7 +39,7 @@ export function BaseModal({setIsOpen, open}) {
     <div className='pb-24'>
       <div className="mt-10 flex justify-center gap-x-6">
         <Button href="/register" className="relative getStartedButton overflow-clip hover:text-white hover:bg-slate-900 transition-all" >
-          <span class="absolute inset-x-0 h-1 bottom-0 bg-blue-600"></span>
+          <span className="absolute inset-x-0 h-1 bottom-0 bg-blue-600"></span>
           Get 7 days free  
         </Button>
         <Button
