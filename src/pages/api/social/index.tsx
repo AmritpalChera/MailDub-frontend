@@ -120,6 +120,7 @@ const getTemplate = (socialMedia: string, emailContent: string) => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+  console.log('I AM RUNNING!!');
   await runMiddleware(req, res);
   let userId: string;
   try {
