@@ -5,12 +5,15 @@ import { useDispatch } from 'react-redux';
 import { setUserData } from '@/redux/features/UserSlice';
 import { protectedRoutes } from '@/utils/misc';
 
-export default function Setup({children}) {
+interface SetupProps {
+  children: any
+}
+
+export default function Setup({children}: SetupProps) {
   const dispatch = useDispatch();
   const router = useRouter();
   const userSession1 = async () => {
     const routename = router.pathname.toLowerCase();
-    if (routename.includes('api')) return;
     const session = await supabase.auth.getSession();
     // const customer = await supabase.from('customers').select().single();
     const user = session?.data?.session?.user;
