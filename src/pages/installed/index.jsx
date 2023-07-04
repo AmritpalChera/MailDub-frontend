@@ -6,7 +6,7 @@ import { AuthLayout } from '@/components/AuthLayout'
 import { Logo } from '@/components/Logo'
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { selectUser } from '../redux/features/UserSlice';
+import { selectUser } from '@/redux/features/UserSlice';
 import Image from 'next/image';
 import GmailLogo from '@/images/logos/gmail.svg';
 
@@ -16,17 +16,12 @@ export default function Login() {
  
   
   const sendTokenToChromeExtension = async ({ extensionId, userId }) => {
-    console.log('userId is: ', userId);
-    console.log('extention id: ', extensionId);
-    console.log('chrome run time: ', chrome.runtime)
     chrome.runtime?.sendMessage(extensionId, { userId }, response => {
       if (!response.success) {
         console.log('error sending message', response);
         return response;
       }
-      console.log("response sent: ", response);
     });
-    console.log("end of funtion")
   };
 
   useEffect(() => {

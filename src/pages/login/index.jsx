@@ -6,7 +6,7 @@ import { Button } from '@/components/Button'
 import { TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
 import { useDispatch } from 'react-redux';
-import { setUserData } from '../redux/features/UserSlice';
+import { setUserData } from '@/redux/features/UserSlice';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 

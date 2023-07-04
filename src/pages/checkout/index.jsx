@@ -1,12 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import supabase from '@/utils/setup/supabase';
 import { AuthLayout } from '@/components/AuthLayout'
 import { Button } from '@/components/Button'
 import { TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser, setUserData } from '../redux/features/UserSlice';
+import { selectUser, setUserData } from '@/redux/features/UserSlice';
 import { useEffect } from 'react';
 
 export default function Login() {
