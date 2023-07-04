@@ -18,6 +18,7 @@ export default function Login() {
   const sendTokenToChromeExtension = async ({ extensionId, userId }) => {
     console.log('userId is: ', userId);
     console.log('extention id: ', extensionId);
+    console.log('chrome run time: ', chrome.runtime)
     chrome.runtime?.sendMessage(extensionId, { userId }, response => {
       if (!response.success) {
         console.log('error sending message', response);
