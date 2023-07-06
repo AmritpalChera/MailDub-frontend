@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { setUserData } from '@/redux/features/UserSlice';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { IoReturnDownBackOutline } from 'react-icons/io5';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -52,7 +53,11 @@ export default function Login() {
           <Link href="/" aria-label="Home">
             <Logo className="h-10 w-auto" />
           </Link>
-          <div className="mt-20">
+          <Link href="/" aria-label="Home" className='flex mt-4'>
+              <IoReturnDownBackOutline />
+              <span className='ml-2 text-sm font-bold text-gray-700'>Return</span>
+          </Link>
+          <div className="mt-12">
             <h2 className="text-lg font-semibold text-gray-900">
               Sign in to your account
             </h2>

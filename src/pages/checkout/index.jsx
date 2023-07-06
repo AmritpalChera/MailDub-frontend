@@ -7,7 +7,7 @@ import { Logo } from '@/components/Logo'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser, setUserData } from '@/redux/features/UserSlice';
 import { useEffect } from 'react';
-
+import { IoReturnDownBackOutline } from 'react-icons/io5';
 export default function Login() {
 
   const { email, id } = useSelector(selectUser);
@@ -26,7 +26,11 @@ export default function Login() {
           <Link href="/" aria-label="Home">
             <Logo className="h-10 w-auto" />
           </Link>
-          <div className="mt-20">
+          <Link href="/" aria-label="Home" className='flex mt-4'>
+              <IoReturnDownBackOutline />
+              <span className='ml-2 text-sm font-bold text-gray-700'>Return</span>
+          </Link>
+          <div className="mt-12">
             <h2 className="text-lg font-semibold text-gray-900">
               Checkout - $19.99/Month
             </h2>

@@ -9,7 +9,6 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
-import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, selectUser, setUserData } from '../redux/features/UserSlice';
 
@@ -95,7 +94,7 @@ export function Header() {
               className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5"
             >
               <MobileNavLink href="#features">Features</MobileNavLink>
-              <MobileNavLink href="#testimonials">Testimonials</MobileNavLink>
+              <MobileNavLink href="#faq">Faq</MobileNavLink>
               <MobileNavLink href="#pricing">Pricing</MobileNavLink>
               <hr className="m-2 border-slate-300/40" />
               {!loggedIn ? <MobileNavLink href="/login">Sign in</MobileNavLink> : <div onClick={signout} className="block w-full p-2">Signout</div>}
@@ -116,7 +115,7 @@ export function Header() {
             </Link>
             <div className="hidden md:flex md:gap-x-6">
               <NavLink href="#features">Features</NavLink>
-              <NavLink href="#testimonials">Testimonials</NavLink>
+              <NavLink href="#faq">FAQ</NavLink>
               <NavLink href="#pricing">Pricing</NavLink>
             </div>
           </div>

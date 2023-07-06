@@ -5,35 +5,42 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-features.jpg'
-import screenshotExpenses from '@/images/screenshots/twitter.png'
-import screenshotPayroll from '@/images/screenshots/image.png'
-import screenshotReporting from '@/images/screenshots/linkedin.png'
-import screenshotVatReturns from '@/images/screenshots/instagram.png'
+import twitter from '@/images/screenshots/twitter.jpg'
+import aiImage from '@/images/screenshots/aiImage.jpg'
+import linkedin from '@/images/screenshots/linkedin.jpg'
+import facebook from '@/images/screenshots/facebook.jpg';
+import screenshotVatReturns from '@/images/screenshots/instagram.jpg'
 
 const features = [
   {
     title: 'Curated Images',
     description:
-      "Easily scroll through all the pictures in your email. Auto generate new pictures to create the perfect post.",
-    image: screenshotPayroll,
+      "Create AI images from scratch or scroll through existing ones.",
+    image: aiImage,
   },
   {
     title: 'Twitter',
     description:
       "Inspiring tweets that follow the best practices and standards with short and sweet text.",
-    image: screenshotExpenses,
+    image: twitter,
   },
   {
-    title: 'Facebook/Instagram',
+    title: 'Instagram',
     description:
       "Create visually appealing, easy-to-read content for targetted audience automatically identified through your email.",
     image: screenshotVatReturns,
   },
   {
+    title: 'Facebook',
+    description:
+      "Create visually appealing, easy-to-read content for targetted audience automatically identified through your email.",
+    image: facebook,
+  },
+  {
     title: 'LinkedIn',
     description:
       'Capture the attention of any professional! The perfect balance between thoughtful and salesy content.',
-    image: screenshotReporting,
+    image: linkedin,
   },
 ]
 
@@ -76,7 +83,7 @@ export function PrimaryFeatures() {
           </h2>
           <div className="mt-6 text-lg tracking-tight text-blue-100 flex justify-center">
             <div className='max-w-xl'>
-              Our extension is perfect for the hustler, trailblazer, and visionary who wants to conquer the digital world – one breath-taking image and catchy caption at a time.
+              Our extension is perfect for all professionals who want to conquer the digital world – one breath-taking image and catchy caption at a time.
             </div>
           </div>
         </div>
@@ -135,7 +142,7 @@ export function PrimaryFeatures() {
                         {feature.description}
                       </p>
                     </div>
-                    <div className="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 md:w-[40rem] lg:w-[40.8125rem] xl:w-[50rem]">
+                    <div className="mt-10 ml-4 w-full overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 md:w-[40rem] lg:w-[40.8125rem] xl:w-[50rem]">
                       <Image
                         className="w-full"
                         src={feature.image}

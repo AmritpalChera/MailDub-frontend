@@ -6,8 +6,11 @@ import { TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
 import { useSelector } from 'react-redux';
 import { selectUser } from '@/redux/features/UserSlice';
+import { IoReturnDownBackOutline } from 'react-icons/io5';
+import GmailLogo from '@/images/logos/gmail.svg';
+import Image from 'next/image'
 
-export default function Login() {
+export default function Manage() {
 
   const { email } = useSelector(selectUser);
 
@@ -21,7 +24,22 @@ export default function Login() {
           <Link href="/" aria-label="Home">
             <Logo className="h-10 w-auto" />
           </Link>
-          <div className="mt-20">
+          <Link href="/" aria-label="Home" className='flex mt-4'>
+              <IoReturnDownBackOutline />
+              <span className='ml-2 text-sm font-bold text-gray-700'>Return</span>
+          </Link>
+          <Link href="https://chrome.google.com/webstore/detail/calendly-meeting-scheduli/cbhilkcodigmigfbnphipnnmamjfkipp" target='blank'>
+            <button className="my-6 mt-12 flex w-full items-center justify-center rounded-full bg-white px-3 py-2 text-sm font-medium  shadow-one hover:text-primary border-2 border-gray">
+              <span className="mr-3">
+              <Image src={GmailLogo} width={20} height={20} />
+              </span>
+                Install Now
+            </button>
+          </Link>
+          <Link href="https://forms.gle/4aqjyYwTYjbQbyWw9" target='blank' className='w-full text-center text-blue-600 font-bold text-sm underline'>
+            Feedback
+          </Link>
+          <div className="mt-6">
             <h2 className="text-lg font-semibold text-gray-900">
               Manage MailDub Payments
             </h2>

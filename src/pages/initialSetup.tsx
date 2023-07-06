@@ -24,7 +24,11 @@ export default function Setup({children}: SetupProps) {
       dispatch(setUserData(dataToSet));
       const signinRedirect = localStorage.getItem('signinRedirect');
       localStorage.removeItem('signinRedirect');
-      if (signinRedirect) router.push(signinRedirect);
+
+      if (signinRedirect) {
+        router.push(signinRedirect);
+        return;
+      }
     } else {
       // user does not exists, see if they're trying to access protected route
       if (protectedRoutes.includes(routename)) {

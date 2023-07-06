@@ -4,6 +4,9 @@ import Modal from 'react-modal';
 import VideoImage from '@/images/screenshots/vidImage.png';
 
 import { Button } from '@/components/Button'
+import { useSelector } from 'react-redux';
+import { selectUser } from '../redux/features/UserSlice';
+import Link from 'next/link';
 
 Modal.defaultStyles.overlay.backgroundColor = '#00000060';
 const customStyles = {
@@ -25,7 +28,7 @@ const customStyles = {
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 // Modal.setAppElement('#yourAppElement');
 
-export function BaseModal({setIsOpen, open}) {
+export function BaseModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   function openModal() {
     setIsModalOpen(true);
@@ -55,6 +58,11 @@ export function BaseModal({setIsOpen, open}) {
           <span className="ml-3">Watch video</span>
         </Button>
       </div>
+      {/* <div className='flex justify-center mt-12'>
+        <Link href="https://forms.gle/4aqjyYwTYjbQbyWw9" target='blank' className='w-full text-center text-blue-600 font-bold text-sm underline'>
+          Feedback
+        </Link>
+      </div> */}
       <div className='w-full flex justify-center pt-24'>
         <div onClick={openModal} className=' max-w-4xl rounded-xl overflow-hidden flex justify-center mt-6 mb-16 cursor-pointer shadow-2xl shadow-gray-300 hover:shadow-gray-700 '>
           <Image src={VideoImage} className='w-full  rounded-xl  ' width={2000} height={2000} alt="maildub" />
