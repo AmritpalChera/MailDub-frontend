@@ -14,6 +14,8 @@ export default function Manage() {
 
   const { email } = useSelector(selectUser);
 
+  const paymentLink = process.env.NODE_ENV === 'development' ? "https://billing.stripe.com/p/login/test_5kA16j8kV96S5MccMM" : "https://billing.stripe.com/p/login/fZe9EbeDJ4QagNyeUU"
+
   return (
     <>
       <Head>
@@ -63,7 +65,7 @@ export default function Manage() {
               color="blue"
               className="w-full mt-4"
               target='blank'
-              href="https://billing.stripe.com/p/login/test_5kA16j8kV96S5MccMM?email=cheraamritpal@gmail.com"
+              href={paymentLink}
             >
               <span>
                 Manage <span aria-hidden="true">&rarr;</span>
