@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     mode: 'subscription',
     customer_email: req.body.email,
     client_reference_id: req.body.userId,
-    success_url: `${DOMAIN}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `https://chrome.google.com/webstore/detail/maildub/hkdlodgnnioibefcbkcjfhkfbpmpnhbe`,
     cancel_url: `${DOMAIN}?canceled=true`,
   });
 
