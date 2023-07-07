@@ -28,7 +28,7 @@ export default function Manage() {
               <IoReturnDownBackOutline />
               <span className='ml-2 text-sm font-bold text-gray-700'>Return</span>
           </Link>
-          <Link href="https://chrome.google.com/webstore/detail/calendly-meeting-scheduli/cbhilkcodigmigfbnphipnnmamjfkipp" target='blank'>
+          <Link href="https://chrome.google.com/webstore/detail/maildub/hkdlodgnnioibefcbkcjfhkfbpmpnhbe" target='blank'>
             <button className="my-6 mt-12 flex w-full items-center justify-center rounded-full bg-white px-3 py-2 text-sm font-medium  shadow-one hover:text-primary border-2 border-gray">
               <span className="mr-3">
               <Image src={GmailLogo} width={20} height={20} />
