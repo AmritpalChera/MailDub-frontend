@@ -36,7 +36,6 @@ export default function Login() {
     }
 
     const user = status?.data?.user;
-    console.log('logged user: ', user)
     dispatch(setUserData({ ...user }));
     if (!user?.customer) {
       router.push('/checkout');
