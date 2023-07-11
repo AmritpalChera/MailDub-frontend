@@ -27,8 +27,8 @@ export function CallToAction() {
             It’s time to take control of your sales. Buy our software so you can
             be more productive and focus on what matters.
           </p>
-          <Button href="/register" color="blue" className="mt-10">
-            Get 7 days free
+          <Button href="https://chrome.google.com/webstore/detail/maildub/hkdlodgnnioibefcbkcjfhkfbpmpnhbe" color="blue" className="mt-10">
+            Start Today!
           </Button>
         </div>
       </Container>

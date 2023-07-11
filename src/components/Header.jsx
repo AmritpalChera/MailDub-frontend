@@ -135,18 +135,18 @@ export function Header() {
             </div>
           ) : (
               <div className="flex items-center gap-x-5 md:gap-x-8">
-                {customer.userId && (
-                  <Button  href={customer.userId? '/manage' : '/checkout'} color="black">
-                  <span>
+                
+                <Button  href={customer.userId? '/manage' : '/checkout'} color="black">
+                  <span className='font-bold'>
                     Manage
                   </span>
                 </Button>
-                )}
-              <Button onClick={signout} color="blue" className="hidden md:block">
-                <span>
-                  Sign out
-                </span>
-              </Button>
+                
+                <Button onClick={signout} color="blue" className="hidden md:block">
+                  <span>
+                    Sign out
+                  </span>
+                </Button>
               <div className="-mr-1 md:hidden">
                 {MobileNavigation(!!id)}
               </div>
