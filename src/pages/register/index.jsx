@@ -46,7 +46,7 @@ export default function Register() {
   }
 
   useEffect(() => {
-    if (user?.id) {
+    if (user?.id && !localStorage.getItem('signinRedirect')) {
       if (user.customer?.userId) router.push('/manage');
       else router.push('/checkout');
     }
