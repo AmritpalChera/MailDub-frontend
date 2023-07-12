@@ -83,7 +83,7 @@ export function PrimaryFeatures() {
           </h2>
           <div className="mt-6 text-lg tracking-tight text-blue-100 flex justify-center">
             <div className='max-w-xl'>
-              Our extension is perfect for all professionals who want to conquer the digital world – one breath-taking image and catchy caption at a time.
+              Our GMAIL extension produces state of the art content for multiple social media platforms.
             </div>
           </div>
         </div>

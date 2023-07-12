@@ -22,8 +22,8 @@ export function Hero() {
         for professionals.
       </h1>
       <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
-        Our chrome extention saves hours curating best gmail content
-        for your next social media post. Do it now with one click!
+        Turn any email into bold marketing content in seconds with
+        our GMAIL chrome extension. Save HOURS and reach MILLIONS
       </p>
       
       
