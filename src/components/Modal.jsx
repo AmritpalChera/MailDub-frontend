@@ -43,7 +43,7 @@ export function BaseModal() {
       <div className="mt-10 flex justify-center gap-x-6">
         <Button href="https://chrome.google.com/webstore/detail/maildub/hkdlodgnnioibefcbkcjfhkfbpmpnhbe" className="relative getStartedButton overflow-clip hover:text-white hover:bg-slate-900 transition-all" >
           <span className="absolute inset-x-0 h-1 bottom-0 bg-blue-600"></span>
-          Start TODAY
+          Download NOW
         </Button>
         <Button
           onClick={openModal}

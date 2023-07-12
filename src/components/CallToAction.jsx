@@ -28,7 +28,7 @@ export function CallToAction() {
             be more productive and focus on what matters.
           </p>
           <Button href="https://chrome.google.com/webstore/detail/maildub/hkdlodgnnioibefcbkcjfhkfbpmpnhbe" color="blue" className="mt-10">
-            Start Today!
+            Download NOW
           </Button>
         </div>
       </Container>
