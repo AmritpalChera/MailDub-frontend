@@ -8,3 +8,18 @@ This is the frontend interface for users to manage their subscription to MailDub
 
 
 Please see live app at https://www.maildub.club/
+
+## How to run this
+Install the dependencies
+```
+yarn install
+```
+
+Configure the .env variables as outlined in the sample env. 
+
+Run the repository
+```
+yarn dev
+```
+
+
